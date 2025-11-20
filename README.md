@@ -12,6 +12,10 @@ A hands-on learning environment for understanding AWS Cloud services **without n
 
 ---
 
+![Image](https://drive.google.com/uc?export=view&id=1AuGIs2k2VbQR7GFvVOI8tU8FzTXC-h5R)
+
+---
+
 ## What This Repository Teaches You
 
 This project is designed as a practical learning resource for AWS. By using LocalStack, you can learn how AWS works internally _without incurring costs_.

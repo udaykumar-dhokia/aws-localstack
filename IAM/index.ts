@@ -1,6 +1,11 @@
-import { CreateUserCommand, ListUsersCommand } from "@aws-sdk/client-iam";
+import {
+  CreateUserCommand,
+  ListUsersCommand,
+  DeleteUserCommand,
+} from "@aws-sdk/client-iam";
 import { iamClient } from "../awsClient.ts";
 
+// List all the active users
 async function listUsers() {
   try {
     const data = await iamClient.send(new ListUsersCommand({}));
@@ -11,6 +16,7 @@ async function listUsers() {
   }
 }
 
+// Create new user
 async function createUser(userName: string) {
   try {
     const command = new CreateUserCommand({
@@ -24,5 +30,20 @@ async function createUser(userName: string) {
   }
 }
 
+// Delete the active user
+async function deleteUser(userName: string) {
+  try {
+    const command = new DeleteUserCommand({
+      UserName: userName,
+    });
+
+    const response = await iamClient.send(command);
+    console.log("User deleted: ", response.$metadata.cfId);
+  } catch (err) {
+    console.log("Error deleting user: ", err);
+  }
+}
+
 listUsers();
 // createUser("test-user");
+// deleteUser("test-user");
